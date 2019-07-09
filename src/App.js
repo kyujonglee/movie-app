@@ -5,9 +5,10 @@ import styled, { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 // 추가해야 할 것!
-// 1. css 적용(Style Component 인강을 들은 후!) (Ok)
-// 2. 무한스크롤 적용
-// 3. fetch 대신해서 Axios 적용 (Ok)
+// 1. css 적용(Style Component 인강을 들은 후!) [O]
+// 2. 무한스크롤 [x]
+// 3. fetch 대신해서 Axios 적용 [O]
+// 4. 모바일 반응형 웹 적용 [x]
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
@@ -22,13 +23,15 @@ const GlobalStyle = createGlobalStyle`
 
 const MovieApp = styled.div`
   box-sizing: border-box;
-  width: 100%;
   background-color: #dcdde1;
-  padding: 100px 180px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 250px;
-  grid-gap: 50px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding : 50px;
+  @media screen and (min-width: 320px) and (max-width: 667px) {
+    flex-direction : column;
+    padding : 20px;
+  }
 `;
 
 const Loading = styled.div`
@@ -78,11 +81,11 @@ class App extends Component {
   render() {
     return (
       <>
-          {this.state.movies ? (
-            <MovieApp>{this._renderMovies()}</MovieApp>
-          ) : (
-            <Loading> Loading </Loading>
-          )}
+        {this.state.movies ? (
+          <MovieApp>{this._renderMovies()}</MovieApp>
+        ) : (
+          <Loading> Loading </Loading>
+        )}
         <GlobalStyle />
       </>
     );

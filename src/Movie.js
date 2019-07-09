@@ -4,22 +4,27 @@ import styled from "styled-components";
 import LinesEllipsis from "react-lines-ellipsis";
 
 const Container = styled.div`
-  width: 600px;
-  display: grid;
-  grid-template-columns: 3.5fr 6.5fr;
+  width: 40%;
+  display: flex;
   background-color: white;
-  position: relative;
+  margin-bottom: 50px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  @media screen and (min-width: 320px) and (max-width: 667px) {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 const Poster = styled.img`
-  position: absolute;
+  position: relative;
   top: -20px;
-  left: 20px;
-  display: block;
-  width: 180px;
-  height: 240px;
+  width: 100%;
+  height: auto;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  @media screen and (min-width: 320px) and (max-width: 667px) {
+    width: 50%;
+  }
 `;
 
 const Title = styled.span`
@@ -48,6 +53,21 @@ const Columns = styled.div`
   & > span {
     padding: 10px 0px;
   }
+  &:first-child {
+    width: 35%;
+  }
+  &:last-child {
+    width: 65%;
+  }
+  @media screen and (min-width: 320px) and (max-width: 667px) {
+    &:first-child {
+      align-items: center;
+    }
+    &:first-child,
+    &:last-child {
+      width: 100%;
+    }
+  }
 `;
 const Synopsis = styled.span`
   color: #b2bec3;
@@ -70,7 +90,7 @@ function Movie({ title, poster, genres, synopsis }) {
           <LinesEllipsis
             text={synopsis}
             maxLine="3"
-            ellipsis=" ..."
+            ellipsis="..."
             trimRight
             basedOn="letters"
           />
@@ -103,28 +123,5 @@ MoviePoster.propTypes = {
   poster: propTypes.string.isRequired,
   alt: propTypes.string.isRequired
 };
-
-// function Movie({ title, poster, genres, synopsis }) {
-//   return (
-//     <div className="Movie">
-//       <div className="Movies__Columns">
-//         <MoviePoster poster={poster} alt={title}/>
-//       </div>
-//       <div className="Movies__Columns">
-//         <h1>{title}</h1>
-//         <div className="Movies__Genres">
-//           {genres.map((genre, index) => (
-//             <MovieGenre genre={genre} key={index} />
-//           ))}
-//         </div>
-//         <p className="Movie__Synopsis">{synopsis}</p>
-//       </div>
-//     </div>
-//   );
-// }
-
-// function MoviePoster({ poster,alt }) {
-//   return <img src={poster} alt={alt} title={alt} className="Movie__Poster" />;
-// }
 
 export default Movie;
