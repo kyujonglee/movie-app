@@ -18,12 +18,13 @@ const Container = styled.div`
 
 const Poster = styled.img`
   position: relative;
-  top: -20px;
+  top: -30px;
   width: 100%;
   height: auto;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
   @media screen and (min-width: 320px) and (max-width: 667px) {
     width: 50%;
+    top : -10px;
   }
 `;
 
