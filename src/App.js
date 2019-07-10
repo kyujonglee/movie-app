@@ -8,7 +8,7 @@ import reset from "styled-reset";
 // 1. css 적용(Style Component 인강을 들은 후!) [O]
 // 2. 무한스크롤 [x]
 // 3. fetch 대신해서 Axios 적용 [O]
-// 4. 모바일 반응형 웹 적용 [x]
+// 4. 모바일 반응형 웹 적용 [O]
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
